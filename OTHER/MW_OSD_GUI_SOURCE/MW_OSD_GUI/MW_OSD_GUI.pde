@@ -677,7 +677,7 @@ Textlabel FileUploadText, TXText, RXText;
 // textlabels -------------------------------------------------------------------------------------------------------------
 
 // Buttons------------------------------------------------------------------------------------------------------------------
-Button buttonIMPORT,buttonSAVE,buttonREAD,buttonRESET,buttonWRITE,buttonRESTART, buttonGPSTIMELINK, buttonSPORTLINK;
+Button buttonIMPORT,buttonSAVE,buttonREAD,buttonRESET,buttonWRITE,buttonRESTART, buttonUPDATE, buttonGPSTIMELINK, buttonSPORTLINK;
 Button buttonLUP, buttonLDOWN, buttonLLEFT, buttonLRIGHT, buttonLPOSUP, buttonLPOSDOWN;
 Button buttonLHUDUP,buttonLPOSHUDDOWN,buttonLPOSEN, buttonLSET, buttonLADD, buttonLSAVE, buttonLCANCEL;
 Button buttonLEW,buttonSetRSSIlow,buttonSetRSSIhigh,buttonSetHWCurrentSensor,buttonSetHWCurrentSensorCancel,buttonSetHWCurrentSensorSave;
@@ -869,6 +869,7 @@ DONATEimage  = loadImage("DON_def.png");
   buttonWRITE = controlP5.addButton("WRITEEEMSP",1,20,25,60,16);buttonWRITE.setColorBackground(osdcontr_).setGroup(OSD_CONTROLS).setLabel("   WRITE");
   buttonRESET = controlP5.addButton("DEFAULT",1,20,45,60,16);buttonRESET.setColorBackground(osdcontr_).setGroup(OSD_CONTROLS).setLabel(" DEFAULT");
   buttonRESTART = controlP5.addButton("RESTART",1,20,65,60,16);buttonRESTART.setColorBackground(osdcontr_).setGroup(OSD_CONTROLS).setLabel(" RESTART");
+  buttonUPDATE = controlP5.addButton("UPDATE",1,20,85,60,16);buttonUPDATE.setColorBackground(osdcontr_).setGroup(OSD_CONTROLS).setLabel(" UPDATE");
   buttonLEW = controlP5.addButton("LEW",1,30,(6*17),92,16);buttonLEW.setColorBackground(osdcontr_).setGroup(G_RCSWITCH).setLabel("Layout Editor");
 
   buttonSetRSSIlow = controlP5.addButton("bSetRSSIlow",1,140,(3*17),30,16);buttonSetRSSIlow.setColorBackground(calibrate_).setGroup(G_RSSI).setLabel("SET");

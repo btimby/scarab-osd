@@ -48,7 +48,7 @@ void SetupGroups(){
                 .setBarHeight(15)
                 .activateEvent(true)
                 .setBackgroundColor(color(30,255))
-                .setBackgroundHeight(90)
+                .setBackgroundHeight(110)
                 .setLabel("   OSD CONTROLS")
                 .disableCollapse();
                 //.close() 

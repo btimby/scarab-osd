@@ -136,6 +136,7 @@ void InitSerial(float portValue) {
       buttonRESET.setColorBackground(green_);
       commListbox.setColorBackground(green_);
       buttonRESTART.setColorBackground(green_);
+      buttonUPDATE.setColorBackground(green_);
       
       g_serial.buffer(100);
             txtmessage.setText("");
@@ -191,6 +192,7 @@ void ClosePort(){
   buttonRESET.setColorBackground(osdcontr_);
   buttonWRITE.setColorBackground(osdcontr_);
   buttonRESTART.setColorBackground(osdcontr_);
+  buttonUPDATE.setColorBackground(osdcontr_);
   if (CloseMode > 0){
     InitSerial(LastPort);
     CloseMode = 0;
@@ -248,19 +250,51 @@ void BounceSerial(){
   
 }  
 
-void RESTART(){
-//  toggleMSP_Data = true;
+void restart_OSD(){
   for (int txTimes = 0; txTimes<3; txTimes++) {
     headSerialReply(MSP_OSD, 1);
     serialize8(OSD_RESET);
     tailSerialReply();
     delay(100);
   }
+}
+
+void RESTART(){
+//  toggleMSP_Data = true;
+  restart_OSD();
 //  toggleMSP_Data = false;
   READconfigMSP_init();
 }  
 
+void UPDATE(){
+   if (init_com!=1){
+     noLoop();
+     JOptionPane.showConfirmDialog(null,"Please Select a Port", "Not Connected", JOptionPane.PLAIN_MESSAGE,JOptionPane.WARNING_MESSAGE);
+     loop();
+     return;
+   }
 
+   try {  
+    SwingUtilities.invokeAndWait(new Runnable(){
+    public void run(){
+      JFileChooser fc = new JFileChooser();
+      fc.setDialogType(JFileChooser.SAVE_DIALOG);
+      fc.setDialogTitle("Select MWOSD Firmware");
+      int returnVal = fc.showOpenDialog(null);
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+        println("approved");
+        // Upload firmware to OSD:
+        restart_OSD();
+        println("restarted");
+        ClosePort();
+        println("closed");
+        update_OSD(Serial.list()[int(LastPort)], fc.getSelectedFile());
+      }
+    }
+  }
+  );  
+  } catch (Exception e) { }
+}
 
 
 
@@ -1219,4 +1253,3 @@ void MWData_Com() {
 
   public void EElookuptable2GUIsettings(){ // Sync settings from EE table to GUI
   }
-
