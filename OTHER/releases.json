@@ -1,0 +1,12 @@
+var releases = {
+    '1.4': {
+        'desc': 'Release 1.4',
+        'notes': 'https://github.com/btimby/scarab-osd/RELEASE',
+        'date': '1/1/2016',
+        'firmware': {
+            'name': 'default',
+            'notes': 'Build with most common options',
+            'url': 'https://github.com/btimby/scarab-osd/raw/master/OTHER/RELEASES/1.4/mwosd.hex'
+        }
+    },
+};
